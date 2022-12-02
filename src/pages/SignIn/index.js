@@ -7,6 +7,12 @@ import logo from '../../assets/logo.png'
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function handleSubmit(e){
+    e.preventDefault();
+    alert('clicou')
+  }
+  
   return (
     <div className="container-center">
       <div className="login">
@@ -14,13 +20,13 @@ function SignIn() {
       <img src={logo} alt="Sistema Logo" />
       </div>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Entrar</h1>
-        <input type="text" placeholder="email@email.com" />
-        <input type="password" placeholder="*****" />
+        <input type="text" placeholder="email@email.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="password" placeholder="*****" alue={password} onChange={(e) => setPassword(e.target.value)}/>
         <button type="submit">Acessar</button>
       </form>
-      
+
       <Link to="/register">Criar uma conta</Link>
       </div>
     </div>
