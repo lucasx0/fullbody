@@ -1,0 +1,57 @@
+.container-grid{
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f8f8;
+
+    display: grid;
+    grid-template-areas: "l r" "f f";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    gap: 5px;
+
+}
+
+.nav-left{
+    background-color: #0ff;
+    grid-area: l;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+
+}
+
+.nav-right{
+    width: 100%;
+    height: 100%;
+    grid-area: r;
+    background-color: #f666;
+}
+
+
+.form-profile button:hover {
+
+    background-color: #121212;
+    color: #FFF;
+}
+
+@media screen and (max-width: 720px) {
+    .container-grid{
+        display: block;
+        
+    }
+
+    .nav-left{
+        height: 40%;
+        margin-bottom: 15px;
+
+    }
+
+    .nav-right{
+        width: 100%;
+        height: 100%;
+        top: -500px;
+
+    }
+    
+}

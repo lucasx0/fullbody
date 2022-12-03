@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth';
 import avatar from '../../assets/avatar.png';
 
 import { Link } from 'react-router-dom';
-import { FiHome, FiUser, FiSettings } from "react-icons/fi";
+import { FiHome, FiUsers, FiFileText, FiSettings } from "react-icons/fi";
 
 export default function Header(){
   const { user } = useContext(AuthContext);
@@ -18,16 +18,24 @@ export default function Header(){
 
       <Link to="/dashboard">
         <FiHome color="#FFF" size={24} />
-        Chamados
+        Painel
       </Link>
-      <Link to="/customers">
-        <FiUser color="#FFF" size={24} />
-        Clientes
-      </Link>    
+
+      <Link to="/dashboard">
+        <FiFileText color="#FFF" size={24} />
+        Avaliações Fisica
+      </Link>
+
+      <Link to="/alunos">
+        <FiUsers color="#FFF" size={24} />
+        Alunos
+      </Link>   
+
       <Link to="/profile">
         <FiSettings color="#FFF" size={24} />
         Configurações
-      </Link>           
+      </Link>      
+               
     </div>
   )
 }
