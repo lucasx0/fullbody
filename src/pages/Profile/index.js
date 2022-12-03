@@ -69,7 +69,7 @@ export default function Profile(){
                     <input type="text" value={nome} onChange={ (e) => SetNome (e.target.value) } />
 
                     <label>Email</label>   
-                    <input type="text" value={email} disabled={true}/>
+                    <input type="text" value={email} disabled={false}/>
 
                     <label>Profissão</label>   
                     <input type="text" value={prof} onChange={ (e) => setProf (e.target.value) }/>
