@@ -1,45 +1,82 @@
-
-
-
-
 .container-grid{
     width: 100%;
     height: 100vh;
-    background-color: #f8f8f8;
 
     display: grid;
     grid-template-areas: "l r" "f f";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 4fr 1fr;
-    gap: 5px;
+    gap: 15px;
+ 
 
 }
 
 .nav-left{
-    background-color: #0ff;
+    background-color: #f8f8f8;
     grid-area: l;
     width: 100%;
     height: 100%;
-    text-align: center;
     padding: 5px;
+    text-align: center;
     border-radius: 15px;
-
+    display: flex;
+    justify-content: center;    
 }
 
 .nav-right{
     width: 100%;
     height: 100%;
     grid-area: r;
-    background-color: #0ff;
+    background-color: #f8f8f8;
     border-radius: 15px;
 }
 
+.form-pesquisar-alunos label{
+    font-size: 26px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.form-pesquisar-alunos input{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.form-pesquisar-alunos button{
+    margin-top: 16px;
+}
 
 .form-profile button:hover {
 
     background-color: #121212;
     color: #FFF;
 }
+
+.card {
+    width: 100%;
+    border-top: 1px solid  rgb(146, 146, 146);
+    border-bottom: 1px solid rgb(146, 146, 146) ; 
+
+}
+
+.nav-right h4 {
+    margin: 30px;
+    font-size: 24px;
+}
+
+.nav-right table {
+    border: none;
+    
+}
+
+.nav-right td{
+    justify-content: center;
+}
+
+
+
 
 @media screen and (max-width: 720px) {
     .container-grid{
