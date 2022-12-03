@@ -62,8 +62,9 @@ export default function New(){
 
           <input type="radio" name="radio" value="atendido" onChange={handleOptionChange} checked={status === 'atendido'}/>
           <span>Atendido</span>
+          
         </div>
-         
+        <br/>
          <label>Complemento</label>
          <textarea type="text" placeholder="Orientações" value={complemento}
          onChange={(e) => setComplemento(e.target.value)}/>
