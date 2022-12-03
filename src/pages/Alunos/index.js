@@ -33,7 +33,7 @@ export default function Alunos(){
           <label>Pesquisar Aluno</label>
           <label>Aluno <span>*</span></label>
           <input type="text" placeholder="Pesquisar aluno" value={user} onChange={ (e) => setUser(e.target.value) } />
-          <button type="submit">Pesquisar</button>
+          <button type="submit">Pesquisar</button> <br/>
           <button type="submit">Novo Aluno</button>
         </form>
       </div>
