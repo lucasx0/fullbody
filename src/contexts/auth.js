@@ -1,4 +1,5 @@
 
+import axios from 'axios';
 import { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
 
@@ -65,6 +66,7 @@ function AuthProvider({ children }){
     function storageUser(data){
       localStorage.setItem('SistemaUser', JSON.stringify(data));
     }
+
 
   }
 
