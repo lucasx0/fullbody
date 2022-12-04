@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 import Alunos from "../pages/Alunos";
 import New from "../pages/New";
+import AvaliacaoFisica from "../pages/AvaliacaoFisica";
 
 export default function Routes(){
   return(
@@ -17,6 +18,7 @@ export default function Routes(){
       <Route exact path="/profile" component={Profile} isPrivate/>
       <Route exact path="/alunos" component={Alunos} isPrivate/> 
       <Route exact path="/new" component={New} isPrivate/> 
+      <Route exact path="/avaliacaofisica" component={AvaliacaoFisica} isPrivate/> 
     </Switch>
   )
 }
