@@ -41,13 +41,21 @@ function AuthProvider({ children }){
       email: email,
       password: password,
       birthDate: birthDate
-    }, config
+    }
     ).then((response) => {
-      setUser(response.data);
-      storageUser(response.data);
+      let data = {
+      name: nome,
+      email: email,
+      password: password,
+      birthDate: birthDate
+      }
+      setUser(data);
+      storageUser(data);
       setLoadingAuth(false);
+      console.log(data)
       console.log('olá')
-      console.log(response.data)
+      console.log(user)
+      console.log('olá 2')
     })
     .catch((error)=>{
       console.log(error);
@@ -60,9 +68,13 @@ function AuthProvider({ children }){
 
   }
 
+  async function signOut(){
+    localStorage.removeItem('SistemaUser')
+    setUser(null)
+  }
 
   return(
-    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp }}>
+    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   )
