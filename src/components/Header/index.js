@@ -22,7 +22,7 @@ export default function Header(){
         Painel
       </Link>
 
-      <Link to="/dashboard">
+      <Link to="/avaliacaofisica">
         <FiFileText color="#FFF" size={24} />
         Avaliações Fisica
       </Link>

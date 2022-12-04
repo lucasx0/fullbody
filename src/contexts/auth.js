@@ -1,6 +1,7 @@
 
-import { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
+import { useState, createContext, useEffect } from 'react';
+
 
 export const AuthContext = createContext({});
 
@@ -85,9 +86,10 @@ function AuthProvider({ children }){
       setLoadingAuth(false);
     })
   }
-
+  
   function storageUser(data){
     localStorage.setItem('SistemaUser', JSON.stringify(data));
+
   }
 
   async function signOut(){
