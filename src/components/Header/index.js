@@ -9,6 +9,7 @@ import { FiHome, FiUsers, FiFileText, FiSettings, FiLogOut } from "react-icons/f
 
 export default function Header(){
   const { user } = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
 
   return(
     <div className="sidebar">
@@ -34,13 +35,11 @@ export default function Header(){
       <Link to="/profile">
         <FiSettings color="#FFF" size={24} />
         Configurações
-      </Link>      
-
-      <Link to="/">
+      </Link>
+      <Link to="/" onClick={ () => signOut() }>
         <FiLogOut color="#FFF" size={24} />
         Sair
-      </Link>     
-               
+      </Link>  
     </div>
   )
 }
