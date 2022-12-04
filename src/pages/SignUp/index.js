@@ -10,7 +10,7 @@ function SignUp() {
 
   function handleSubmit(e){
     e.preventDefault();
-    alert('CLICOU')
+    e.signUp();
   }
 
   return (
