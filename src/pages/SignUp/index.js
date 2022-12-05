@@ -32,7 +32,7 @@ function SignUp() {
           <input type="text" placeholder="Seu nome" value={nome} onChange={(e) => setNome(e.target.value)} />
           <input type="text" placeholder="email@email.com" value={email} onChange={ (e) => setEmail(e.target.value) }/>
           <input type="password" placeholder="*******" value={password} onChange={(e) => setPassword(e.target.value) } />
-          <input type="text" placeholder="data de nascimento" value={birthDate} onChange={(e) => setbirthDate(e.target.value)}></input>
+          <input type="text" placeholder="data de nascimento 0000-00-00" value={birthDate} onChange={(e) => setbirthDate(e.target.value)}></input>
           <button type="submit">Cadastrar</button>
         </form>
 
