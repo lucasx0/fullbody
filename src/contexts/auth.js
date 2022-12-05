@@ -27,6 +27,29 @@ function AuthProvider({ children }){
 
   }, [])
 
+  async function signIn(email, password){
+    setLoadingAuth(true);
+    const loginUrl = 'http://localhost:8081/signin'
+    axios.post(loginUrl, {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      let data = {
+        email: email,
+        password: password,
+      }
+
+      setUser(data);
+      storageUser(data);
+      setLoadingAuth(false);
+    })
+    .catch((error)=>{
+      console.log(error);
+      setLoadingAuth(false);
+    })
+  }
+
   async function signUp(email, password, nome, birthDate){
     setLoading(true);
     let config = {
@@ -62,11 +85,10 @@ function AuthProvider({ children }){
       console.log(error);
       setLoadingAuth(false);
     })
-    
-    function storageUser(data){
-      localStorage.setItem('SistemaUser', JSON.stringify(data));
-    }
-
+  }
+  
+  function storageUser(data){
+    localStorage.setItem('SistemaUser', JSON.stringify(data));
 
   }
 
@@ -76,7 +98,7 @@ function AuthProvider({ children }){
   }
 
   return(
-    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut }}>
+    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut, signIn}}>
       {children}
     </AuthContext.Provider>
   )
