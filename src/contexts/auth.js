@@ -27,6 +27,29 @@ function AuthProvider({ children }){
 
   }, [])
 
+  async function createCustomer(name, email, birthDate, genero, id, token){
+    setLoading(true);
+    const createUrl = `http://localhost:8081/customer/instructor/${id}`
+    axios.post(createUrl, {
+      name: name,
+      email: email,
+      birthDate: birthDate,
+      gender: genero
+    }, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+    }})
+    .then((response) => {
+      console.log(response.data);
+      console.log(response.status);
+      setLoading(false)
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false);
+    })
+  }
+
   async function signIn(email, password){
     setLoadingAuth(true);
     const loginUrl = 'http://localhost:8081/signin'
@@ -98,7 +121,7 @@ function AuthProvider({ children }){
   }
 
   return(
-    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut, signIn}}>
+    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut, signIn, createCustomer}}>
       {children}
     </AuthContext.Provider>
   )
