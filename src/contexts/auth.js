@@ -41,7 +41,7 @@ function AuthProvider({ children }){
       }
 
       setUser(data);
-      storageUser(data);
+      storageUser(response.data);
       setLoadingAuth(false);
     })
     .catch((error)=>{
@@ -89,7 +89,7 @@ function AuthProvider({ children }){
   
   function storageUser(data){
     localStorage.setItem('SistemaUser', JSON.stringify(data));
-
+    console.log(localStorage)
   }
 
   async function signOut(){
