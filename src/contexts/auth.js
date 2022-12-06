@@ -62,6 +62,8 @@ function AuthProvider({ children }){
         email: email,
         password: password,
       }
+      localStorage.setItem("INSTRUCTORID", response.data.id);
+      localStorage.setItem("TOKEN", response.data.jwt);
 
       setUser(data);
       storageUser(response.data);

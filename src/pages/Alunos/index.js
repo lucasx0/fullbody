@@ -1,23 +1,53 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './alunos.css';
 import Title from '../../components/Title';
 import Header from '../../components/Header';
 
 import { FiUsers } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+import api from "../../services/api";
 
 export default function Alunos(){
-  const [nomeFantasia, setNomeFantasia] = useState('');
-  const [user, setUser] = useState('');
-  const [endereco, setEndereco] = useState('');
+  const [customer, setCustomer] = useState([]);
+  const [user, setUser] = useState([]);
+  const [nameInstructor, setNameInstructor] = useState('');
 
+  const history = useHistory();
+  const id = localStorage.getItem("SistemaUser");
+  let obj = JSON.parse(id);
 
+  const token = obj.jwt;
+  const instructorID = obj.id
 
   function handleAdd(e){
     e.preventDefault();
     alert('TESTE')
   }
+
+  useEffect(() => {
+    api
+      .get("/customer/instructor/" + instructorID , {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+      .then(res => {
+        setCustomer(res.data);
+        console.log(res.data);
+      });
+    
+    api
+      .get("/instructor/" + instructorID , {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+      .then(res => {
+        setNameInstructor(res.data.name);
+      });
+  }, [instructorID]);
 
   return(
     <div>
@@ -44,37 +74,23 @@ export default function Alunos(){
         <div>
           <h4>Ultimas Avaliações</h4>
         </div>
-      <div className='card'> 
-        <table>
-        <tr>
-          <td>Nome</td>
-          <td>Professor</td>
-          <td>Data</td>
-        </tr>
-        <tr>
-          <td>Gabriel</td>
-          <td>Gleyce souza</td>
-          <td>2 dias atras</td>
-        </tr>
-        </table>
-      </div>
-      
-      <div className='card'> 
-        <table>
-        <tr>
-          <td>Nome</td>
-          <td>Professor</td>
-          <td>Data</td>
-        </tr>
-        <tr>
-          <td>Gabriel</td>
-          <td>Gleyce souza</td>
-          <td>2 dias atras</td>
-        </tr>
-        </table>
-      </div>
+        {customer.map(customer => (
+          <li key={customer.id}>
+            <button
+              onClick={() => {
+                history.push("/");
+              }}
+              type="button"
+            >
+              <strong>Nome</strong>
+              <p>{customer.name}</p>
 
-
+              <strong>Instrutor:</strong>
+              <p>{nameInstructor}</p>
+                  
+            </button>
+          </li>
+        ))}
       </div>
     </div>
     </div>
