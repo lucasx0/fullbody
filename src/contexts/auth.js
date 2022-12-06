@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { useState, createContext, useEffect } from 'react';
-import axios from 'axios';
+
 
 export const AuthContext = createContext({});
 
@@ -26,6 +26,52 @@ function AuthProvider({ children }){
     loadStorage();
 
   }, [])
+
+  async function createCustomer(name, email, birthDate, genero, id, token){
+    setLoading(true);
+    const createUrl = `http://localhost:8081/customer/instructor/${id}`
+    axios.post(createUrl, {
+      name: name,
+      email: email,
+      birthDate: birthDate,
+      gender: genero
+    }, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+    }})
+    .then((response) => {
+      console.log(response.data);
+      console.log(response.status);
+      setLoading(false)
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false);
+    })
+  }
+
+  async function signIn(email, password){
+    setLoadingAuth(true);
+    const loginUrl = 'http://localhost:8081/signin'
+    axios.post(loginUrl, {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      let data = {
+        email: email,
+        password: password,
+      }
+
+      setUser(data);
+      storageUser(response.data);
+      setLoadingAuth(false);
+    })
+    .catch((error)=>{
+      console.log(error);
+      setLoadingAuth(false);
+    })
+  }
 
   async function signUp(email, password, nome, birthDate){
     setLoading(true);
@@ -62,12 +108,11 @@ function AuthProvider({ children }){
       console.log(error);
       setLoadingAuth(false);
     })
-    
-    function storageUser(data){
-      localStorage.setItem('SistemaUser', JSON.stringify(data));
-    }
-
-
+  }
+  
+  function storageUser(data){
+    localStorage.setItem('SistemaUser', JSON.stringify(data));
+    console.log(localStorage)
   }
 
   async function signOut(){
@@ -76,7 +121,7 @@ function AuthProvider({ children }){
   }
 
   return(
-    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut }}>
+    <AuthContext.Provider value={{ signed: !!user,  user, loading, signUp, signOut, signIn, createCustomer}}>
       {children}
     </AuthContext.Provider>
   )

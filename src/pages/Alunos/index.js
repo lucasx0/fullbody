@@ -5,6 +5,7 @@ import Title from '../../components/Title';
 import Header from '../../components/Header';
 
 import { FiUsers } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 export default function Alunos(){
   const [nomeFantasia, setNomeFantasia] = useState('');
@@ -34,7 +35,9 @@ export default function Alunos(){
           <label>Aluno</label>
           <input type="text" placeholder="Pesquisar aluno" value={user} onChange={ (e) => setUser(e.target.value) } />
           <button type="submit centralizado">Pesquisar</button> <br/>
-          <button type="submit">Novo Aluno</button>
+          <Link to="/new" className="new">
+          Novo Aluno
+          </Link>
         </form>
       </div>
       <div className='nav-right'>
