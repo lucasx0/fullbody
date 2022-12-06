@@ -13,9 +13,6 @@ export default function Header(){
 
   return(
     <div className="sidebar">
-      <div>
-        <img src={user.avatarUrl === null ? avatar : user.avatarUrl } alt="Foto avatar" />
-      </div>
 
       <Link to="/dashboard">
         <FiHome color="#FFF" size={24} />

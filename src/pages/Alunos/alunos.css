@@ -75,8 +75,23 @@
     justify-content: center;
 }
 
+.nav-right button{
+    justify-content: center;
+    border: none;
+    width: 100%;
+    border-top: 1px solid  rgb(146, 146, 146);
+    border-bottom: 1px solid rgb(146, 146, 146) ; 
+}
 
-
+.nav-right p{
+    justify-content: center;
+    width: 100%;
+    width: 100%;
+    height: 100%;
+    grid-area: r;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+}
 
 @media screen and (max-width: 720px) {
     .container-grid{
