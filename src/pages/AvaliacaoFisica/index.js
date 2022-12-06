@@ -1,6 +1,5 @@
 import Header from "../../components/Header"
 import Title from "../../components/Title"
-import ListaSuspensa from "../../components/listaSuspensa";
 import { FiPlusCircle } from "react-icons/fi";
 import { useState, useContext, useEffect } from "react";
 
