@@ -15,10 +15,9 @@
     
 }
 
-.nav-left{
-    height:600px;
+.card label{
+    flex-direction: column;
 }
-
 
 .widget-profile label{
     font-size: 28px;
@@ -26,7 +25,7 @@
 }
 
 .card{
-    padding: 15px;
+    padding: 20px;
 }
 
 .card p {
