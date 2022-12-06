@@ -85,24 +85,28 @@ export default function Alunos(){
       </div>
       <div className='nav-right'>
         <div>
-          <h4>Ultimas Avaliações</h4>
+          <h4>Lista de alunos</h4>
         </div>
         {customer.map(customer => (
-          <li key={customer.id}>
+          <div className='card'>
+          <table>
+          <tr key={customer.id}>
             <button
               onClick={() => {
                 history.push("/");
               }}
               type="button"
             >
-              <strong>Nome</strong>
+              <td>Nome:</td>
               <p>{customer.name}</p>
 
-              <strong>Instrutor:</strong>
+              <td>Instrutor:</td>
               <p>{nameInstructor}</p>
                   
             </button>
-          </li>
+          </tr>
+          </table>
+          </div>
         ))}
       </div>
     </div>
