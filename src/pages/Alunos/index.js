@@ -11,7 +11,8 @@ import api from "../../services/api";
 
 export default function Alunos(){
   const [customer, setCustomer] = useState([]);
-  const [user, setUser] = useState([]);
+  const [customerId, setCustomerId] = useState([]);
+  const [newCustomer, setNewCustomer] = useState([]);
   const [nameInstructor, setNameInstructor] = useState('');
 
   const history = useHistory();
@@ -19,11 +20,18 @@ export default function Alunos(){
   let obj = JSON.parse(id);
 
   const token = obj.jwt;
-  const instructorID = obj.id
+  const instructorID = obj.id;
 
   function handleAdd(e){
     e.preventDefault();
-    alert('TESTE')
+    localStorage.setItem("customerId", customerId);
+    history.push("/avaliacaofisica")
+    console.log(customerId)
+  }
+
+  async function handleListUser(e) {
+    console.log(e.target.value)
+    setCustomerId(e.target.value)
   }
 
   useEffect(() => {
@@ -63,7 +71,12 @@ export default function Alunos(){
         <form className="form-pesquisar-alunos" onSubmit={handleAdd}>
           <label>Pesquisar Aluno</label>
           <label>Aluno</label>
-          <input type="text" placeholder="Pesquisar aluno" value={user} onChange={ (e) => setUser(e.target.value) } />
+          <select type="text" placeholder="Pesquisar aluno" value={customerId} onChange={ (e) => handleListUser(e) }>
+          {
+            customer.map( (j) => 
+              <option key={j.customerId} label={j.name}>{j.customerId}</option> )
+          }
+          </select>
           <button type="submit centralizado">Pesquisar</button> <br/>
           <Link to="/new" className="new">
           Novo Aluno
